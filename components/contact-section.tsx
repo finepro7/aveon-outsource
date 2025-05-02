@@ -16,9 +16,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { SectionHeading } from "@/components/section-heading";
-import { motion } from "@/lib/motion-mock";
+import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -39,7 +45,7 @@ const formSchema = z.object({
 export function ContactSection() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -53,7 +59,7 @@ export function ContactSection() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
@@ -73,7 +79,7 @@ export function ContactSection() {
           title="Let's Create Something Amazing Together"
           description="Tell us about your project and we'll get back to you with a custom quote and proposal."
         />
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -97,7 +103,7 @@ export function ContactSection() {
                     </FormItem>
                   )}
                 />
-                
+
                 <FormField
                   control={form.control}
                   name="email"
@@ -105,21 +111,29 @@ export function ContactSection() {
                     <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input placeholder="your.email@example.com" {...field} />
+                        <Input
+                          placeholder="your.email@example.com"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField
                   control={form.control}
                   name="company"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Company <span className="text-muted-foreground">(Optional)</span></FormLabel>
+                      <FormLabel>
+                        Company{" "}
+                        <span className="text-muted-foreground">
+                          (Optional)
+                        </span>
+                      </FormLabel>
                       <FormControl>
                         <Input placeholder="Your company" {...field} />
                       </FormControl>
@@ -127,26 +141,37 @@ export function ContactSection() {
                     </FormItem>
                   )}
                 />
-                
+
                 <FormField
                   control={form.control}
                   name="service"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Service Needed</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
                         <FormControl>
                           <SelectTrigger>
                             <SelectValue placeholder="Select a service" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="3d-characters">3D Characters</SelectItem>
-                          <SelectItem value="environments">Environments</SelectItem>
+                          <SelectItem value="3d-characters">
+                            3D Characters
+                          </SelectItem>
+                          <SelectItem value="environments">
+                            Environments
+                          </SelectItem>
                           <SelectItem value="2d-art">2D Art & UI</SelectItem>
-                          <SelectItem value="game-mechanics">Game Mechanics</SelectItem>
+                          <SelectItem value="game-mechanics">
+                            Game Mechanics
+                          </SelectItem>
                           <SelectItem value="animation">Animation</SelectItem>
-                          <SelectItem value="full-project">Full Project</SelectItem>
+                          <SelectItem value="full-project">
+                            Full Project
+                          </SelectItem>
                           <SelectItem value="other">Other</SelectItem>
                         </SelectContent>
                       </Select>
@@ -155,7 +180,7 @@ export function ContactSection() {
                   )}
                 />
               </div>
-              
+
               <FormField
                 control={form.control}
                 name="message"
@@ -173,7 +198,7 @@ export function ContactSection() {
                   </FormItem>
                 )}
               />
-              
+
               <Button type="submit" className="w-full" disabled={isSubmitting}>
                 {isSubmitting ? "Sending..." : "Send Message"}
               </Button>

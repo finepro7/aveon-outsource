@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "@/lib/motion-mock";
+import { motion } from "framer-motion";
 import { Award, Users, Gamepad, Sparkles } from "lucide-react";
 
 const stats = [
@@ -63,14 +63,14 @@ function StatsCard({
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
-    
+
     const animate = () => {
       if (!hasAnimated) {
         let start = 0;
         const duration = 2000; // 2 seconds
         const step = 16; // ~60fps
         const increment = (value / duration) * step;
-        
+
         const updateCount = () => {
           start += increment;
           if (start < value) {
@@ -81,11 +81,11 @@ function StatsCard({
             setHasAnimated(true);
           }
         };
-        
+
         timeout = setTimeout(updateCount, step);
       }
     };
-    
+
     // Create an Intersection Observer
     const observer = new IntersectionObserver(
       (entries) => {
@@ -96,13 +96,13 @@ function StatsCard({
       },
       { threshold: 0.1 }
     );
-    
+
     // Find the parent element to observe
-    const element = document.querySelector('.stats-container');
+    const element = document.querySelector(".stats-container");
     if (element) {
       observer.observe(element);
     }
-    
+
     return () => {
       if (timeout) clearTimeout(timeout);
       observer.disconnect();

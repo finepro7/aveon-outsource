@@ -1,39 +1,59 @@
 "use client";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Brush, Cuboid as Cube, Gamepad, Workflow, Video, PenTool, SparkleIcon } from "lucide-react";
-import { motion } from "@/lib/motion-mock";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Brush,
+  Cuboid as Cube,
+  Gamepad,
+  Workflow,
+  Video,
+  PenTool,
+  SparkleIcon,
+} from "lucide-react";
+import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/section-heading";
 
 const services = [
   {
     title: "3D Character Models",
-    description: "Breathtaking game-ready characters with detailed textures and optimized topology.",
+    description:
+      "Breathtaking game-ready characters with detailed textures and optimized topology.",
     icon: <Cube className="h-10 w-10 text-chart-1" />,
   },
   {
     title: "Environment Art",
-    description: "Immersive worlds and environments that enhance gameplay and storytelling.",
+    description:
+      "Immersive worlds and environments that enhance gameplay and storytelling.",
     icon: <Brush className="h-10 w-10 text-chart-2" />,
   },
   {
     title: "Game Mechanics",
-    description: "Innovative gameplay systems and mechanics that engage players.",
+    description:
+      "Innovative gameplay systems and mechanics that engage players.",
     icon: <Gamepad className="h-10 w-10 text-chart-3" />,
   },
   {
     title: "2D Concept Art",
-    description: "Visually striking concept art to guide your game's artistic direction.",
+    description:
+      "Visually striking concept art to guide your game's artistic direction.",
     icon: <PenTool className="h-10 w-10 text-chart-4" />,
   },
   {
     title: "Animation & Rigging",
-    description: "Fluid, expressive animations that bring characters and environments to life.",
+    description:
+      "Fluid, expressive animations that bring characters and environments to life.",
     icon: <Video className="h-10 w-10 text-chart-5" />,
   },
   {
     title: "VFX & Visual Systems",
-    description: "Eye-catching visual effects that enhance the player experience.",
+    description:
+      "Eye-catching visual effects that enhance the player experience.",
     icon: <SparkleIcon className="h-10 w-10 text-chart-1" />,
   },
 ];

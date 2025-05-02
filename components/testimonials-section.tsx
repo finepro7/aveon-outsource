@@ -2,29 +2,35 @@
 
 import Image from "next/image";
 import { SectionHeading } from "@/components/section-heading";
-import { motion } from "@/lib/motion-mock";
+import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Quote } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "Pixel Forge Studio transformed our concept art into stunning 3D models that exceeded our expectations. Their attention to detail and technical expertise is outstanding.",
+    quote:
+      "Pixel Forge Studio transformed our concept art into stunning 3D models that exceeded our expectations. Their attention to detail and technical expertise is outstanding.",
     author: "Michael Thompson",
     title: "Creative Director, GameVerse Studios",
-    image: "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image:
+      "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
   },
   {
-    quote: "Working with this team was the best decision we made for our indie game. They delivered high-quality assets on time and within budget, helping our game stand out in a crowded market.",
+    quote:
+      "Working with this team was the best decision we made for our indie game. They delivered high-quality assets on time and within budget, helping our game stand out in a crowded market.",
     author: "Sarah Johnson",
     title: "Lead Developer, Indie Horizons",
-    image: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image:
+      "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
   },
   {
-    quote: "Their UI design revamped our mobile game's interface, resulting in a 40% increase in player engagement. Professional, creative, and highly responsive to feedback.",
+    quote:
+      "Their UI design revamped our mobile game's interface, resulting in a 40% increase in player engagement. Professional, creative, and highly responsive to feedback.",
     author: "David Chen",
     title: "Product Manager, MobilePlay Games",
-    image: "https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image:
+      "https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
   },
 ];
 
@@ -37,7 +43,7 @@ export function TestimonialsSection() {
           title="What Our Clients Say"
           description="Don't just take our word for it. Hear from studios and developers who've partnered with us."
         />
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
           {testimonials.map((testimonial, index) => (
             <motion.div
@@ -55,12 +61,22 @@ export function TestimonialsSection() {
                   </p>
                   <div className="flex items-center">
                     <Avatar className="h-12 w-12 mr-4">
-                      <AvatarImage src={testimonial.image} alt={testimonial.author} />
-                      <AvatarFallback>{testimonial.author.split(" ").map(n => n[0]).join("")}</AvatarFallback>
+                      <AvatarImage
+                        src={testimonial.image}
+                        alt={testimonial.author}
+                      />
+                      <AvatarFallback>
+                        {testimonial.author
+                          .split(" ")
+                          .map((n) => n[0])
+                          .join("")}
+                      </AvatarFallback>
                     </Avatar>
                     <div>
                       <p className="font-medium">{testimonial.author}</p>
-                      <p className="text-sm text-muted-foreground">{testimonial.title}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {testimonial.title}
+                      </p>
                     </div>
                   </div>
                 </CardContent>
